@@ -2,7 +2,8 @@
   <div>
     <p>III</p>
     <input type="text" v-model= "word">
-    <generation :word="word"></generation>
+    <input type="text" v-model= "meaning">
+    <generation :word="word" :meaning="meaning"></generation>
     <bottom-nav>
     </bottom-nav>
   </div>
@@ -15,7 +16,8 @@ import generation from '@/components/generation.vue'
 export default {
   data () {
     return {
-      word: '旧词新'
+      word: '旧词新',
+      meaning: '这是一个示例'
     }
   }, 
   components: {
