@@ -14,7 +14,7 @@ export default {
     word: {
       type: String
     },
-    meaning: {
+    oldMeaning: {
       type: String
     }
   },
@@ -39,12 +39,13 @@ export default {
         }
         Canvas.save()
         Canvas.restore()
-        Canvas.setFontSize(20)
+        Canvas.setFontSize(25)
         Canvas.setTextAlign('left')
         Canvas.fillText(_that.word+':', 0, 130)
         Canvas.save()
         Canvas.restore()
-        fillTextWrap(Canvas, _that.meaning, 0, 150, 375)
+        Canvas.setFontSize(20)
+        fillTextWrap(Canvas, _that.oldMeaning, 0, 160, 300, 25)
         Canvas.draw(true, setTimeout(
           function() {
             wx.getSetting({
@@ -110,6 +111,7 @@ export default {
         Canvas.setFontSize(40)
         Canvas.setTextAlign('center')
         Canvas.setTextBaseline('middle')
+        Canvas.font = 'normal normal 40px HiraMinProN-W3' 
         Canvas.fillText(word, posX+25, 75)
         Canvas.setFontSize(20)
         Canvas.fillText(pinyin(word), posX+25, 30)
@@ -127,19 +129,19 @@ export default {
         for (let letter of arrText) {
           currentText = currentText + letter
           currentWidth = ctx.measureText(currentText).width
-          if (currentWidth + 20 > maxWidth) {
-            if (isFirstLine) {
-              ctx.fillText(currentText, posX, posY)
-              isFirstLine = false
-            } else {
-              ctx.fillText(currentText, posX, posY)
-            }
+          if (isFirstLine === false && currentWidth + 20 > maxWidth) {
+            ctx.fillText(currentText, posX, posY)
+            currentText = ''
+            posY = posY + lineHeight
+          } else if (isFirstLine === true && currentWidth + 40 > maxWidth) {
+            ctx.fillText(currentText, posX+20, posY)
+            isFirstLine = false
             currentText = ''
             posY = posY + lineHeight
           }
         }
         if (isFirstLine) {
-          ctx.fillText(currentText, posX, posY)
+          ctx.fillText(currentText, posX+20, posY)
         } else {
           ctx.fillText(currentText, posX, posY)
         }
@@ -151,10 +153,10 @@ export default {
   computed: {
     watcher: function() {
       const word = this.word
-      const meaning = this.meaning
+      const oldMeaning = this.oldMeaning
       return {
         word,
-        meaning
+        oldMeaning
       }
     }
   },
@@ -172,12 +174,13 @@ export default {
         }
         Canvas.save()
         Canvas.restore()
-        Canvas.setFontSize(20)
+        Canvas.setFontSize(25)
         Canvas.setTextAlign('left')
         Canvas.fillText(_that.word+':', 0, 130)
         Canvas.save()
         Canvas.restore()
-        fillTextWrap(Canvas, _that.meaning, 0, 150, 375)
+        Canvas.setFontSize(20)
+        fillTextWrap(Canvas, _that.oldMeaning, 0, 160, 300, 25)
         Canvas.draw()
       }
       function drawPattice(posX, posY, width, word) {
@@ -223,24 +226,22 @@ export default {
         for (let letter of arrText) {
           currentText = currentText + letter
           currentWidth = ctx.measureText(currentText).width
-          if (currentWidth + 20 > maxWidth) {
-            if (isFirstLine) {
-              ctx.fillText(currentText, posX, posY)
-              isFirstLine = false
-            } else {
-              ctx.fillText(currentText, posX, posY)
-            }
+          if (isFirstLine === false && currentWidth + 20 > maxWidth) {
+            ctx.fillText(currentText, posX, posY)
+            currentText = ''
+            posY = posY + lineHeight
+          } else if (isFirstLine === true && currentWidth + 40 > maxWidth) {
+            ctx.fillText(currentText, posX+20, posY)
+            isFirstLine = false
             currentText = ''
             posY = posY + lineHeight
           }
         }
         if (isFirstLine) {
-          ctx.fillText(currentText, posX, posY)
+          ctx.fillText(currentText, posX+20, posY)
         } else {
           ctx.fillText(currentText, posX, posY)
         }
-        currentText = ''
-        posY = posY + lineHeight
       }
     }
   },
@@ -257,12 +258,13 @@ export default {
       }
       Canvas.save()
       Canvas.restore()
-      Canvas.setFontSize(20)
+      Canvas.setFontSize(25)
       Canvas.setTextAlign('left')
       Canvas.fillText(_that.word+':', 0, 130)
       Canvas.save()
       Canvas.restore()
-      fillTextWrap(Canvas, _that.meaning, 0, 150, 375)
+      Canvas.setFontSize(20)
+      fillTextWrap(Canvas, _that.oldMeaning, 0, 160, 300, 25)
       Canvas.draw()
     }
     function drawPattice(posX, posY, width, word) {
@@ -308,19 +310,19 @@ export default {
       for (let letter of arrText) {
         currentText = currentText + letter
         currentWidth = ctx.measureText(currentText).width
-        if (currentWidth > maxWidth) {
-          if (isFirstLine) {
-            ctx.fillText(currentText, posX, posY)
-            isFirstLine = false
-          } else {
-            ctx.fillText(currentText, posX, posY)
-          }
+        if (isFirstLine === false && currentWidth + 20 > maxWidth) {
+          ctx.fillText(currentText, posX, posY)
+          currentText = ''
+          posY = posY + lineHeight
+        } else if (isFirstLine === true && currentWidth + 40 > maxWidth) {
+          ctx.fillText(currentText, posX+20, posY)
+          isFirstLine = false
           currentText = ''
           posY = posY + lineHeight
         }
       }
       if (isFirstLine) {
-        ctx.fillText(currentText, posX, posY)
+        ctx.fillText(currentText, posX+20, posY)
       } else {
         ctx.fillText(currentText, posX, posY)
       }
