@@ -1,7 +1,7 @@
 <template>
   <div class="generation_page">
     <div>
-      <canvas canvas-id="pattice" style="width:300px; height:400px"  class="picture"></canvas>
+      <canvas canvas-id="pattice" style="width:310px; height:400px"  class="picture"></canvas>
     </div>
     <hr>
     <i-button type="primary" @click="saveImage" class="saveImage">保存图片</i-button>
@@ -43,6 +43,7 @@ export default {
         Canvas.setFontSize(25)
         Canvas.setTextAlign('left')
         if (_that.word) {
+          Canvas.font = 'normal bold 25px sans-serif'
           Canvas.fillText(_that.word+':', 0, 130)
         }
         Canvas.save()
@@ -88,6 +89,7 @@ export default {
         )
       }
       function drawPattice(posX, posY, width, word) {
+        Canvas.font = 'normal bold 25px sans-serif'
         Canvas.save()
         Canvas.restore()
         Canvas.beginPath()
@@ -179,6 +181,7 @@ export default {
         Canvas.setFontSize(25)
         Canvas.setTextAlign('left')
         if (_that.word) {
+          Canvas.font = 'normal bold 25px sans-serif'
           Canvas.fillText(_that.word+':', 0, 130)
         }
         Canvas.save()
@@ -188,6 +191,7 @@ export default {
         Canvas.draw()
       }
       function drawPattice(posX, posY, width, word) {
+        Canvas.font = 'normal bold 25px sans-serif'
         Canvas.restore()
         Canvas.beginPath()
         Canvas.setLineWidth(1)
@@ -343,9 +347,6 @@ export default {
   .picture{
     padding:0px;
     margin:10px;
-  }
-  .saveImage{
-
   }
 </style>
 
