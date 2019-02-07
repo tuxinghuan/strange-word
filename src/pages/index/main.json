@@ -1,5 +1,11 @@
 {
-    "navigationBarTitleText": "首页",
+    "navigationBarTitleText": "旧词新意",
+    "usingComponents": {
+        "i-button": "../../../static/iview/button/index",
+        "i-input": "../../../static/iview/input/index",
+        "i-panel": "../../../static/iview/panel/index",
+        "i-divider": "../../../static/iview/divider/index"
+    },
     "tabBar": {
         "color":"#6f6f6f",
         "selectedColor": "#18a3ff",

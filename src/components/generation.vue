@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="generation_page">
     <div>
-      <canvas canvas-id="pattice" style="width:300px; height:300px"  class="picture"></canvas>
+      <canvas canvas-id="pattice" style="width:300px; height:400px"  class="picture"></canvas>
     </div>
-    <button type="primary" @click="saveImage">保存图片</button>
+    <hr>
+    <i-button type="primary" @click="saveImage" class="saveImage">保存图片</i-button>
   </div>
 </template>
 
@@ -41,7 +42,9 @@ export default {
         Canvas.restore()
         Canvas.setFontSize(25)
         Canvas.setTextAlign('left')
-        Canvas.fillText(_that.word+':', 0, 130)
+        if (_that.word) {
+          Canvas.fillText(_that.word+':', 0, 130)
+        }
         Canvas.save()
         Canvas.restore()
         Canvas.setFontSize(20)
@@ -111,7 +114,6 @@ export default {
         Canvas.setFontSize(40)
         Canvas.setTextAlign('center')
         Canvas.setTextBaseline('middle')
-        Canvas.font = 'normal normal 40px HiraMinProN-W3' 
         Canvas.fillText(word, posX+25, 75)
         Canvas.setFontSize(20)
         Canvas.fillText(pinyin(word), posX+25, 30)
@@ -176,7 +178,9 @@ export default {
         Canvas.restore()
         Canvas.setFontSize(25)
         Canvas.setTextAlign('left')
-        Canvas.fillText(_that.word+':', 0, 130)
+        if (_that.word) {
+          Canvas.fillText(_that.word+':', 0, 130)
+        }
         Canvas.save()
         Canvas.restore()
         Canvas.setFontSize(20)
@@ -260,7 +264,9 @@ export default {
       Canvas.restore()
       Canvas.setFontSize(25)
       Canvas.setTextAlign('left')
-      Canvas.fillText(_that.word+':', 0, 130)
+      if (_that.word) {
+        Canvas.fillText(_that.word+':', 0, 130)
+      }
       Canvas.save()
       Canvas.restore()
       Canvas.setFontSize(20)
@@ -335,9 +341,11 @@ export default {
 
 <style>
   .picture{
-    border:4px double  black;
     padding:0px;
     margin:10px;
+  }
+  .saveImage{
+
   }
 </style>
 
