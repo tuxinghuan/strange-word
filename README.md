@@ -1,6 +1,6 @@
-# strange-word
+# 旧词新意
 
-> A Mpvue project
+旧词新意是一个基于mpvue制作的微信小程序，目的在于快速创建属于您自己的旧词新意图。
 
 ## Build Setup
 
