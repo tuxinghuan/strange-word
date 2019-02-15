@@ -1,6 +1,26 @@
 # 旧词新意
 
+## 介绍
+
 旧词新意是一个基于mpvue制作的微信小程序，目的在于快速创建属于您自己的旧词新意图。
+
+## 使用
+
+微信搜索**旧词新意**小程序或扫描以下二维码:
+
+<img src="https://github.com/tuxinghuan/strange-word/blob/master/static/img/QRcode.jpg" width="375">
+
+## demo
+操作界面样式：
+
+<img src="https://github.com/tuxinghuan/strange-word/blob/master/static/img/demo1.png" width="375">
+
+图片样式：
+
+
+<img src="https://github.com/tuxinghuan/strange-word/blob/master/static/img/demo2.jpeg" width="375">
+
+
 
 ## Build Setup
 
